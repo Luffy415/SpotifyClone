@@ -60,7 +60,7 @@ const playSong = (track, pause=false) => {
 }
 
 const displayAlbums = async() => {
-  let res = await fetch(`http://localhost:7700/songs/`)
+  let res = await fetch(`/songs/`)
   let resText = await res.text()
   let div = document.createElement("div")
   div.innerHTML = resText
@@ -71,7 +71,7 @@ const displayAlbums = async() => {
     let e = array[index]
     if (e.href.includes("/songs")) {
       let folder = (e.href.split("/").slice(-2)[0]);
-      let res = await fetch(`http://localhost:7700/songs/${folder}/info.json`)
+      let res = await fetch(`songs/${folder}/info.json`)
       let resJson = await res.json()
       cardContainer.innerHTML = cardContainer.innerHTML + `<div class="card" data-folder = "${folder}">
                   <div class="play">
