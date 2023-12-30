@@ -71,7 +71,7 @@ const displayAlbums = async() => {
     let e = array[index]
     if (e.href.includes("/songs")) {
       let folder = (e.href.split("/").slice(-2)[0]);
-      let res = await fetch(`songs/${folder}/info.json`)
+      let res = await fetch(`/songs/${folder}/info.json`)
       let resJson = await res.json()
       cardContainer.innerHTML = cardContainer.innerHTML + `<div class="card" data-folder = "${folder}">
                   <div class="play">
@@ -95,8 +95,6 @@ const displayAlbums = async() => {
 }
 
 const main = async () => {
-    await getSongs("songs/ncs/");
-    
     displayAlbums()
     
     currentSong.addEventListener("timeupdate", ()=>{
